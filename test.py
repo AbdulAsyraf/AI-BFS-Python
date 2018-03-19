@@ -1,10 +1,5 @@
 from random import *
 
-color = ["red", "blue", "yellow", "green", "orange"]
-
-total = []
-loc = []
-
 def setup(i, total):
     if i < 7:
         return total[i+8:] + total[:i+7]
@@ -29,6 +24,20 @@ def search(state, target, answer):
         if len(answer) != 0:
             break
 
+color = ["Red", "Blue", "Yellow", "Green", "Orange"]
+
+total = []
+loc = []
+
+print("0 - RED")
+print("1 - BLUE")
+print("2 - YELLOW")
+print("3 - GREEN")
+print("4 - ORANGE")
+check = input("Please enter a number to search for the color: ")
+
+test = color[check]
+
 for i in range(0, 3):
     temp = color
     shuffle(temp)
@@ -36,20 +45,17 @@ for i in range(0, 3):
 
 print(total)
 
-start = color[randint(0,4)]
-print("start: %s" % start)
+start = test
+while start == test:
+    start = color[randint(0, 4)]
+
+print("Randomly chosen starting color: %s" % start)
 
 for j in range(0, len(total)):
     if total[j] == start:
         loc.append(j)
 
-print("Index with start color : %s" % loc)
-
-test = start
-while test == start:
-    test = color[randint(0, 4)]
-
-print("test value is: %s" % test)
+print("Indices with starting color: %s" % loc)
 
 work = [0,0,0]
 
@@ -64,8 +70,8 @@ if answer[1] < 0:
 else:
     part2 = " %i step(s) to the right"
 
-part1 = "Target found after searching from index %i"
+part1 = "The color %s is found after searching from index %i"
 whole = part1 + part2
 
 answer[1] = abs(answer[1])
-print(whole % (loc[answer[0]], answer[1]))
+print(whole % (test, loc[answer[0]], answer[1]))
