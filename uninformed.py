@@ -64,8 +64,8 @@ if answer[0] < 0:
 else:
     part2 = " %i step(s) to the right"
 
-part1 = "The color %s is found after searching from index %i"
+part1 = "The color %s is found after searching"
 whole = part1 + part2
 
 answer[0] = abs(answer[0])
-print(whole % (test, startLoc, answer[0]))
+print(whole % (test, answer[0]))
